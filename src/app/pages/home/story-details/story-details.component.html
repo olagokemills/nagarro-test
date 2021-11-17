@@ -1,0 +1,87 @@
+<main role="main" class="container text-left">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h4 class="pb-4 mb-4 font-italic border-bottom">
+         {{story?.byline}}
+        </h4>
+        <div class="d-flex">
+            <a class="p-2 fs-12"  *ngFor="let item of story?.des_facet">{{item}}</a>
+        </div>
+  
+        <div class="blog-post">
+          <h3 class="blog-post-title">{{story?.title}}</h3>
+          <p class="blog-post-meta">{{story?.created_date | date }}</p>
+  
+          <p>{{story?.abstract}}</p>
+          <hr>
+          <img [src]="story?.multimedia[0]?.url" class="img-fluid" [width]="story?.multimedia[0]?.width" [height]="story?.multimedia[0]?.width"/>
+           <div class="w-100">
+               <p>{{story?.multimedia[0]?.caption}}</p>
+           </div> 
+           <div class="d-flex">
+               <em>Published on: {{story?.published_date | date}}</em>
+           </div>
+          <p>Yeah, she dances to her own beat. Oh, no. You could've been the greatest. 'Cause, baby, <a href="#">you're a firework</a>. Maybe a reason why all the doors are closed. Open up your heart and just let it begin. So très chic, yeah, she's a classic.</p>
+          
+          <p>Takes you miles high, so high, 'cause she’s got that one international smile.</p>
+          <ol>
+            <li>Scared to rock the boat and make a mess.</li>
+            <li>I could have rewrite your addiction.</li>
+            <li>I know you get me so I let my walls come down.</li>
+          </ol>
+          <p>After a hurricane comes a rainbow.</p>
+        </div><!-- /.blog-post -->
+        <h4>Comments</h4>
+        <ng-container *ngIf="comments">
+            <div class="blog-post" *ngFor="let item of comments">
+                <h2 class="blog-post-title">Another blog post</h2>
+                <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+        
+                <p>I am ready for the road less traveled. Already <a href="#">brushing off the dust</a>. Yeah, you're lucky if you're on her plane. I used to bite my tongue and hold my breath. Uh, She’s a beast. I call her Karma (come back). Black ray-bans, you know she's with the band. I can't sleep let's run away and don't ever look back, don't ever look back.</p>
+                <blockquote>
+                  <p>Growing fast into a <strong>bolt of lightning</strong>. Be careful Try not to lead her on</p>
+                </blockquote>
+                <p>I'm intrigued, for a peek, heard it's fascinating. Oh oh! Wanna be a victim ready for abduction. She's got that international smile, oh yeah, she's got that one international smile. Do you ever feel, feel so paper thin. I’m gon’ put her in a coma. Sun-kissed skin so hot we'll melt your popsicle.</p>
+                <p>This is transcendental, on another level, boy, you're my lucky star.</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="!comments">
+            <h3>No Comments for this post yet!</h3>
+        </ng-container>
+
+  
+        <!-- <nav class="blog-pagination">
+          <a class="btn btn-outline-primary" href="#">Older</a>
+          <a class="btn btn-outline-secondary disabled">Newer</a>
+        </nav> -->
+  
+      </div><!-- /.blog-main -->
+  
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0">Saw you downtown singing the Blues. Watch you circle the drain. Why don't you let me stop by? Heavy is the head that <em>wears the crown</em>. Yes, we make angels cry, raining down on earth from up above.</p>
+        </div>
+  
+        <div class="p-4">
+          <h4 class="font-italic">Links</h4>
+          <ol class="list-unstyled mb-0">
+            <li *ngFor="let item of story?.per_facet"><a href="#">{{item}}</a></li>
+            <li><a href="#">April 2013</a></li>
+          </ol>
+        </div>
+  
+        <div class="p-4">
+          <h4 class="font-italic">Elsewhere</h4>
+          <ol class="list-unstyled">
+            <li><a [href]="story?.url" target="_blank">Web page</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </aside><!-- /.blog-sidebar -->
+  
+    </div><!-- /.row -->
+  
+  </main><!-- /.container -->
+  

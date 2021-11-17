@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <h4>Search News Item</h4>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Search Article</li>
+            <!-- <li class="breadcrumb-item >Data</li> -->
+        </ol>
+    </nav>
+    <!-- <form> -->
+    <div class="row justify-content-left">
+        <div class="col-md-6 text-left">
+            <form [formGroup]="SearchForm" (ngSubmit)="SearchCategory(SearchForm.value)">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Article Term</label>
+                    <div class="d-flex">
+                        <input type="text" formControlName="searchTerm" class="form-control" id="searchTerm">
+                        <button type="submit" class="btn-sm btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-8 blog-main">
+            <div class="card mb-3" *ngFor="let item of Stories"> 
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img [src]="returnFullUrl(item?.multimedia[0]?.url)" [alt]="item?.snippet" height="250" width="250">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body text-left">
+                      <h5 class="card-title">{{item?.headline.main}}</h5>
+                      <p class="card-text">{{item?.snippet}}</p>
+                      <p class="card-text"><small class="text-muted">{{item?.pub_date | date}}</small></p>
+                      <p class="card-text"><a [href]="item?.web_url" target="_blank">Read more</a></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <aside class="col-md-4 blog-sidebar text-left">
+            <div class="p-4">
+              <h4 class="font-italic">Recent Searches</h4>
+              <ol class="list-unstyled mb-0">
+                <li *ngFor="let item of terms"><a href="javascript:void(0);">{{item}}</a></li>
+              </ol>
+            </div>
+        </aside>
+    </div>
+
+<ng-container  *ngIf="pager?.pages && pager?.pages.length">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <li class="page-item" (click)="setPage(pager.currentPage - 1)" [ngClass]="{disabled: pager.currentPage === 1}">
+            <a class="page-link" href="javascript:void(0)">Previous</a>
+            </li>
+        <li class="page-item" *ngFor="let page of pager.pages">
+            <a class="page-link" href="javascript:void(0)" (click)="setPage(page)" [ngClass]="{active: pager.currentPage === page}">{{page}}</a>
+            </li>
+        <li class="page-item" [ngClass]="{disabled: pager.currentPage === pager.totalPages}">
+            <a class="page-link" href="javascript:void(0)" (click)="setPage(pager.currentPage + 1 )">Next</a>
+            </li>
+        </ul>
+    </nav>
+</ng-container>
+    
+</div>

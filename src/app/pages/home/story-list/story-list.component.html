@@ -1,0 +1,16 @@
+<div class="row mb-2">
+    <div class="col-md-6" *ngFor="let item of Stories">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative text-left">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">{{item?.section}}</strong>
+          <h5 class="mb-0">{{item?.title}}</h5>
+          <div class="mb-1 text-muted">{{item?.created_date | date}}</div>
+          <p class="card-text mb-auto">{{CutString(item?.abstract,60)}}</p>
+          <a  class="stretched-link" (click)="ReadMore(item)">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img [src]="item?.multimedia[0].url" class="img-fluid h-100" width="200"/>
+        </div>
+      </div>
+    </div>
+</div>

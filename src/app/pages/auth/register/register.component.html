@@ -1,0 +1,19 @@
+<div class="text-center">
+        <form class="form-signin" [formGroup]="RegisterForm"  (ngSubmit)="Register(RegisterForm.value)">
+            <div class="col-md text-center">
+                <a class="blog-header-logo text-dark" href="#">NY NEWS</a>
+            </div>
+            <h1 class="h3 mb-3 font-weight-normal">Please register to proceed</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <div class="mt-4">
+                <a [routerLink]="['/auth/login']" >Got an account? Login instead</a>
+            </div>
+      </form>
+     
+</div>
+    

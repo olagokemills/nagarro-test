@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apis:{
+    authServer:'http://localhost:8000/auth',
+    nysServer:'https://api.nytimes.com/svc/'
+  },
+  key:'0rTBMW5k8JFwP4hxRbxEjTb4lmE8kru5'
 };
 
 /*
